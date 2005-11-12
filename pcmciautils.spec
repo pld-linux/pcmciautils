@@ -12,7 +12,6 @@ License:	GPL v2
 Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
 # Source0-md5:	ff3cb012fd1a8801e912054b45420ac2
-#Patch0:		%{name}-DESTDIR.patch
 URL:		http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
 BuildRequires:	flex
 BuildRequires:	sysfsutils-devel >= 1.3.0
