@@ -13,6 +13,7 @@ Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
 # Source0-md5:	ff3cb012fd1a8801e912054b45420ac2
 URL:		http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
+BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	sed >= 4.0
 BuildRequires:	sysfsutils-devel >= 1.3.0
@@ -46,9 +47,12 @@ sed -i -e "s#STARTUP =.*#STARTUP = false#g" Makefile
 sed -i -e "s#UDEV =.*#UDEV = true#g" Makefile
 %endif
 
-%{__make}
-#	CFLAGS="%{rpmcflags}" \
-#	LDFLAGS="%{rpmldflags}"
+%{__make} \
+	KERNEL_DIR=/usr \
+	YACC="bison -y" \
+	CC="%{__cc}" \
+	OPTIMIZATION="%{rpmcflags}" \
+	STRIPCMD=true
 
 %install
 rm -rf $RPM_BUILD_ROOT
