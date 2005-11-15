@@ -3,8 +3,8 @@
 %bcond_without	startup		# build without resource database initiallization
 %bcond_without	udev		# build with hotplug instead of udev
 #
-Summary:	PCMCIA initialization utils for kernels >= 2.6.13
-Summary(pl):	Narzêdzia startowe pcmcia dla kerneli >= 2.6.13
+Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
+Summary(pl):	Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	010
 Release:	0.1
@@ -14,10 +14,10 @@ Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.
 # Source0-md5:	ff3cb012fd1a8801e912054b45420ac2
 URL:		http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
 BuildRequires:	flex
-BuildRequires:	sysfsutils-devel >= 1.3.0
 BuildRequires:	sed >= 4.0
-Requires:	udev
+BuildRequires:	sysfsutils-devel >= 1.3.0
 Requires:	module-init-tools >= 3.2-0.pre4.1
+Requires:	udev
 #if kernel used >= 2.6.13
 #Obsoletes:	pcmcia-cs
 #else
@@ -26,13 +26,14 @@ Requires:	module-init-tools >= 3.2-0.pre4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-PCMCIA initialization utils to be used with kernels >= 2.6.13.
+PCMCIA initialization utils to be used with Linux kernels >= 2.6.13.
 They are designed for new PCMCIA subsystem and are replacement for old
 pcmcia-cs package.
 
 %description -l pl
-Narzêdzia startowe pcmcia dla kerneli >= 2.6.13. Zosta³y stworzone dla
-nowego podsystemu PCMCIA i zastêpuj± stary pakiet pcmcia-cs.
+Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13. Zosta³y
+stworzone dla nowego podsystemu PCMCIA i zastêpuj± stary pakiet
+pcmcia-cs.
 
 %prep
 %setup -q
