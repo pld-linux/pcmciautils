@@ -7,7 +7,7 @@ Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
 Summary(pl):	Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	010
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
@@ -18,7 +18,8 @@ BuildRequires:	flex
 BuildRequires:	sed >= 4.0
 BuildRequires:	sysfsutils-devel >= 1.3.0
 Requires:	module-init-tools >= 3.2-0.pre4.1
-Requires:	udev
+%{!?with_udev:Requires:	hotplug}
+%{?with_udev:Requires:	udev}
 #if kernel used >= 2.6.13
 #Obsoletes:	pcmcia-cs
 #else
