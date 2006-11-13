@@ -41,7 +41,7 @@ pcmcia-cs.
 %setup -q
 
 %build
-%if %{without startup}
+%if !%{with startup}
 sed -i -e "s#STARTUP =.*#STARTUP = false#g" Makefile
 %endif
 %if %{with udev}
