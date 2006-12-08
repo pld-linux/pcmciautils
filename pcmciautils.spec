@@ -7,7 +7,7 @@ Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
 Summary(pl):	Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	014
-Release:	1
+Release:	1.5
 License:	GPL v2
 Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
@@ -77,6 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %attr(755,root,root) /sbin/pccardctl
 %attr(755,root,root) /sbin/pcmcia-check-broken-cis
+%attr(755,root,root) /sbin/lspcmcia
 %if %{with startup}
 %attr(755,root,root) /sbin/pcmcia-socket-startup
 %endif
