@@ -44,8 +44,8 @@ pcmcia-cs.
 %if !%{with startup}
 sed -i -e "s#STARTUP =.*#STARTUP = false#g" Makefile
 %endif
-%if %{with udev}
-sed -i -e "s#UDEV =.*#UDEV = true#g" Makefile
+%if !%{with udev}
+sed -i -e "s#UDEV =.*#UDEV = false#g" Makefile
 %endif
 
 %{__make} \
