@@ -61,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -f $RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
+echo '.so pccardctl.8' >$RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -75,10 +78,11 @@ rm -rf $RPM_BUILD_ROOT
 %else
 %{_sysconfdir}/hotplug/*
 %endif
+%attr(755,root,root) /sbin/lspcmcia
 %attr(755,root,root) /sbin/pccardctl
 %attr(755,root,root) /sbin/pcmcia-check-broken-cis
-%attr(755,root,root) /sbin/lspcmcia
 %if %{with startup}
 %attr(755,root,root) /sbin/pcmcia-socket-startup
 %endif
-%{_mandir}/*/*
+%{_mandir}/man8/lspcmcia.8*
+%{_mandir}/man8/pccardctl.8*
