@@ -76,7 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with udev}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/udev/rules.d/60-pcmcia.rules
 %else
-%{_sysconfdir}/hotplug/*
+%attr(755,root,root) %{_sysconfdir}/hotplug/*.agent
+%attr(755,root,root) %{_sysconfdir}/hotplug/*.rc
 %endif
 %attr(755,root,root) /sbin/lspcmcia
 %attr(755,root,root) /sbin/pccardctl
