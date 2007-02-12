@@ -4,7 +4,7 @@
 %bcond_without	udev		# build with hotplug instead of udev
 #
 Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
-Summary(pl):	Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13
+Summary(pl.UTF-8):   NarzÄ™dzia startowe pcmcia dla jÄ…der Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	014
 Release:	1.5
@@ -32,9 +32,9 @@ PCMCIA initialization utils to be used with Linux kernels >= 2.6.13.
 They are designed for new PCMCIA subsystem and are replacement for old
 pcmcia-cs package.
 
-%description -l pl
-Narzêdzia startowe pcmcia dla j±der Linuksa >= 2.6.13. Zosta³y
-stworzone dla nowego podsystemu PCMCIA i zastêpuj± stary pakiet
+%description -l pl.UTF-8
+NarzÄ™dzia startowe pcmcia dla jÄ…der Linuksa >= 2.6.13. ZostaÅ‚y
+stworzone dla nowego podsystemu PCMCIA i zastÄ™pujÄ… stary pakiet
 pcmcia-cs.
 
 %prep
