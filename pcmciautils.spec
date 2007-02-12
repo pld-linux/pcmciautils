@@ -4,7 +4,7 @@
 %bcond_without	udev		# build with hotplug instead of udev
 #
 Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
-Summary(pl.UTF-8):   Narzędzia startowe pcmcia dla jąder Linuksa >= 2.6.13
+Summary(pl.UTF-8):	Narzędzia startowe pcmcia dla jąder Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	014
 Release:	1.5
