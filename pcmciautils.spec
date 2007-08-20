@@ -7,7 +7,7 @@ Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
 Summary(pl.UTF-8):	Narzędzia startowe pcmcia dla jąder Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	014
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
@@ -48,7 +48,7 @@ sed -i -e "s#STARTUP =.*#STARTUP = false#g" Makefile
 sed -i -e "s#UDEV =.*#UDEV = false#g" Makefile
 %endif
 
-%{__make} \
+%{__make} -j1 \
 	KERNEL_DIR=/usr \
 	YACC="bison -y" \
 	CC="%{__cc}" \
@@ -63,6 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
 echo '.so pccardctl.8' >$RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
+
+sed -i -e 's#MODALIAS#ENV{MODALIAS}#g' $RPM_BUILD_ROOT%{_sysconfdir}/udev/rules.d/60-pcmcia.rules
 
 %clean
 rm -rf $RPM_BUILD_ROOT
