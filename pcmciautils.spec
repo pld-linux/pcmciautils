@@ -7,7 +7,7 @@ Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
 Summary(pl.UTF-8):	Narzędzia startowe pcmcia dla jąder Linuksa >= 2.6.13
 Name:		pcmciautils
 Version:	014
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Base
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
