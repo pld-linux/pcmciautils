@@ -64,7 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
 echo '.so pccardctl.8' >$RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
 
+%if %{with udev}
 sed -i -e 's#MODALIAS#ENV{MODALIAS}#g' $RPM_BUILD_ROOT%{_sysconfdir}/udev/rules.d/60-pcmcia.rules
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
