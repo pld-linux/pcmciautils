@@ -6,12 +6,12 @@
 Summary:	PCMCIA initialization utils for Linux kernels >= 2.6.13
 Summary(pl.UTF-8):	Narzędzia startowe pcmcia dla jąder Linuksa >= 2.6.13
 Name:		pcmciautils
-Version:	015
+Version:	017
 Release:	1
 License:	GPL v2
-Group:		Base
+Group:		Applications/System
 Source0:	http://kernel.org/pub/linux/utils/kernel/pcmcia/%{name}-%{version}.tar.bz2
-# Source0-md5:	9e12435c8b6cf7bf59894e90e480b4aa
+# Source0-md5:	5245af28eeba57ec0606a874d44d10f7
 URL:		http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
 BuildRequires:	bison
 BuildRequires:	flex
@@ -64,10 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
 echo '.so pccardctl.8' >$RPM_BUILD_ROOT%{_mandir}/man8/lspcmcia.8
 
-%if %{with udev}
-sed -i -e 's#MODALIAS#ENV{MODALIAS}#g' $RPM_BUILD_ROOT%{_sysconfdir}/udev/rules.d/60-pcmcia.rules
-%endif
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -78,16 +74,20 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pcmcia/config.opts
 %endif
 %if %{with udev}
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/udev/rules.d/60-pcmcia.rules
+%attr(755,root,root) /lib/udev/pcmcia-check-broken-cis
+%if %{with startup}
+%attr(755,root,root) /lib/udev/pcmcia-socket-startup
+%endif
+/lib/udev/rules.d/60-pcmcia.rules
 %else
-%attr(755,root,root) %{_sysconfdir}/hotplug/*.agent
-%attr(755,root,root) %{_sysconfdir}/hotplug/*.rc
+%attr(755,root,root) %{_sysconfdir}/hotplug/pcmcia.agent
+%attr(755,root,root) %{_sysconfdir}/hotplug/pcmcia.rc
+%if %{with startup}
+%attr(755,root,root) %{_sysconfdir}/hotplug/pcmcia_socket.agent
+%attr(755,root,root) %{_sysconfdir}/hotplug/pcmcia_socket.rc
+%endif
 %endif
 %attr(755,root,root) /sbin/lspcmcia
 %attr(755,root,root) /sbin/pccardctl
-%attr(755,root,root) /sbin/pcmcia-check-broken-cis
-%if %{with startup}
-%attr(755,root,root) /sbin/pcmcia-socket-startup
-%endif
 %{_mandir}/man8/lspcmcia.8*
 %{_mandir}/man8/pccardctl.8*
